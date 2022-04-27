@@ -131,7 +131,7 @@ private:
       rcl_interfaces::msg::ParameterDescriptor desc;
       desc.name = name;
       desc.type = type;
-      desc.read_only = true;
+      desc.read_only = false;
 
       if (name.empty()) {
         throw std::runtime_error("Parameter must have a name");
