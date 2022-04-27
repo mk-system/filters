@@ -58,6 +58,8 @@ public:
 
   bool configure() override;
 
+  bool reconfigure() override;
+
   /**
    * \brief Update the filter and return the data seperately
    * \param data_in T array with length width
@@ -97,6 +99,12 @@ bool MeanFilter<T>::configure()
   data_storage_.reset(new RealtimeCircularBuffer<T>(number_of_observations_, temp_));
 
   return true;
+}
+
+template<typename T>
+bool MeanFilter<T>::reconfigure()
+{
+  return false;
 }
 
 template<typename T>
@@ -141,6 +149,8 @@ public:
 
   bool configure() override;
 
+  bool reconfigure() override;
+
   /**
    * \brief Update the filter and return the data separately
    * \param data_in T array with length width
@@ -184,6 +194,12 @@ bool MultiChannelMeanFilter<T>::configure()
   data_storage_.reset(new RealtimeCircularBuffer<std::vector<T>>(number_of_observations_, temp));
 
   return true;
+}
+
+template<typename T>
+bool MultiChannelMeanFilter<T>::reconfigure()
+{
+  return false;
 }
 
 template<typename T>

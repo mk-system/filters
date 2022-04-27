@@ -56,6 +56,8 @@ public:
 
   bool configure() override;
 
+  bool reconfigure() override;
+
   /**
    * \brief Update the filter and return the data seperately
    * \param data_in T array with length width
@@ -79,6 +81,12 @@ template<typename T>
 bool IncrementFilter<T>::configure()
 {
   return true;
+}
+
+template<typename T>
+bool IncrementFilter<T>::reconfigure()
+{
+  return false;
 }
 
 template<typename T>
@@ -107,6 +115,8 @@ public:
 
   bool configure() override;
 
+  bool reconfigure() override;
+
   /**
    * \brief Update the filter and return the data seperately
    * \param data_in T array with length width
@@ -133,6 +143,12 @@ template<typename T>
 bool MultiChannelIncrementFilter<T>::configure()
 {
   return true;
+}
+
+template<typename T>
+bool MultiChannelIncrementFilter<T>::reconfigure()
+{
+  return false;
 }
 
 template<typename T>

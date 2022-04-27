@@ -54,6 +54,8 @@ public:
 
   bool configure() override;
 
+  bool reconfigure() override;
+
   /**
    * \brief Update the filter and return the data seperately
    * \param data_in T array with length width
@@ -74,6 +76,12 @@ ParamTest<T>::~ParamTest()
 
 template<typename T>
 bool ParamTest<T>::configure()
+{
+  return true;
+}
+
+template<typename T>
+bool ParamTest<T>::reconfigure()
 {
   return true;
 }

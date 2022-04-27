@@ -106,6 +106,8 @@ public:
     return configured_;
   }
 
+  virtual bool reconfigure() = 0;
+
   /**
    * \brief Update the filter and return the data seperately
    * This is an inefficient way to do this and can be overridden in the derived class
@@ -294,6 +296,8 @@ public:
 
     return FilterBase<T>::configure(param_prefix, filter_name, node_logger, node_params);
   }
+
+  virtual bool reconfigure() = 0;
 
   /**
    * \brief Update the filter and return the data seperately
