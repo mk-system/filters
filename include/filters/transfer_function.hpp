@@ -86,6 +86,8 @@ public:
    */
   bool configure() override;
 
+  bool reconfigure() override;
+
   /**
    * \brief Update the filter and return the data seperately
    * \param data_in vector<T> with number_of_channels elements
@@ -159,6 +161,12 @@ bool SingleChannelTransferFunctionFilter<T>::configure()
 }
 
 template<typename T>
+bool SingleChannelTransferFunctionFilter<T>::reconfigure()
+{
+  return false;
+}
+
+template<typename T>
 bool SingleChannelTransferFunctionFilter<T>::update(const T & data_in, T & data_out)
 {
   if (!FilterBase<T>::configured_) {
@@ -227,6 +235,8 @@ public:
    * \param config The xml that is parsed to configure the filter.
    */
   bool configure() override;
+
+  bool reconfigure() override;
 
   /**
    * \brief Update the filter and return the data seperately
@@ -300,6 +310,12 @@ bool MultiChannelTransferFunctionFilter<T>::configure()
   }
 
   return true;
+}
+
+template<typename T>
+bool MultiChannelTransferFunctionFilter<T>::reconfigure()
+{
+  return false;
 }
 
 template<typename T>

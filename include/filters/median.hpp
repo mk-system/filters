@@ -110,6 +110,8 @@ public:
 
   bool configure() override;
 
+  bool reconfigure() override;
+
   /**
    * \brief Update the filter and return the data seperately
    * \param data_in double array with length width
@@ -153,6 +155,12 @@ bool MedianFilter<T>::configure()
 }
 
 template<typename T>
+bool MedianFilter<T>::reconfigure()
+{
+  return false;
+}
+
+template<typename T>
 bool MedianFilter<T>::update(const T & data_in, T & data_out)
 {
   if (!FilterBase<T>::configured_) {
@@ -188,6 +196,8 @@ public:
   ~MultiChannelMedianFilter() override;
 
   bool configure() override;
+
+  bool reconfigure() override;
 
   /**
    * \brief Update the filter and return the data seperately
@@ -231,6 +241,12 @@ bool MultiChannelMedianFilter<T>::configure()
   temp_storage_.resize(number_of_observations_);
 
   return true;
+}
+
+template<typename T>
+bool MultiChannelMedianFilter<T>::reconfigure()
+{
+  return false;
 }
 
 template<typename T>
