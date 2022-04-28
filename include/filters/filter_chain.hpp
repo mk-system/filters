@@ -296,6 +296,24 @@ public:
     return true;
   }
 
+bool reconfigure(int filter_index)
+{
+  size_t filters_number = reference_pointers_.size();
+  if (filter_index >= filters_number)
+  {
+    RCLCPP_ERROR(logging_interface_->get_logger(),
+      "[FilterChain::reconfigure] The index of filter (%d) is out of range (%ld)",
+      filter_index, (filters_number - 1));
+    return false;
+  }
+
+  RCLCPP_INFO(logging_interface_->get_logger(),
+    "[FilterChain::reconfigure] Target filter name: %s",
+    reference_pointers_[filter_index]->getName().c_str());
+
+  return reference_pointers_[filter_index]->reconfigure();
+}
+
 private:
   pluginlib::ClassLoader<filters::FilterBase<T>> loader_;
 
